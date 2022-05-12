@@ -29,4 +29,20 @@ defmodule Tlists do
   defp do_positives([], result), do: Enum.reverse(result)
   defp do_positives([head | tail], result) when head > 0, do: do_positives(tail, [head | result])
   defp do_positives([_head | tail], result), do: do_positives(tail, result)
+
+  @doc """
+  Example of the map method in elixir obviously
+  """
+
+  def sqrt_list(list) do
+    # Provide the funtion to map the lambda function
+    Enum.map(list, fn x -> :math.sqrt(x) end)
+    # Shorthand for a lambda function, using capture
+    Enum.map(list, &(:math.sqrt(&1)))
+    # Provide the reference to a function
+    Enum.map(list, &:math.sqrt/1)
+
+    # Altternative syntax: list comprehensions
+    for x <- list, do: :math.sqrt(x)
+  end
 end
